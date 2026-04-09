@@ -1,0 +1,51 @@
+---
+---
+<section id="contact">
+  <div class="container">
+    <h2 data-i18n="contact.title">Contato</h2>
+    <p class="muted" data-i18n="contact.body">Quer trocar uma ideia? Me encontre nos links abaixo.</p>
+    <div class="links" style="margin-top:0.75rem">
+      <div class="mail-wrap">
+        <button id="mail-btn" class="btn primary" aria-haspopup="true" aria-expanded="false">
+          ✉️ Mail Me
+        </button>
+        <div id="mail-menu" class="mail-menu" role="menu" hidden>
+          <a role="menuitem" href="mailto:victorluan.lobo@gmail.com">
+            <strong data-i18n="contact.mail.pro">Profissional</strong>
+            <span class="muted">victorluan.lobo@gmail.com</span>
+          </a>
+          <a role="menuitem" href="mailto:vlll@ic.ufal.br">
+            <strong data-i18n="contact.mail.academic">Acadêmico</strong>
+            <span class="muted">vlll@ic.ufal.br</span>
+          </a>
+        </div>
+      </div>
+      <a class="btn" href="https://github.com/victorflll" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/victor-lemos-028b83201" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <script>
+      const btn = document.getElementById('mail-btn');
+      const menu = document.getElementById('mail-menu');
+      btn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = menu?.hasAttribute('hidden');
+        if (open) {
+          menu?.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          menu?.setAttribute('hidden', '');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('click', (e) => {
+        if (!menu || menu.hasAttribute('hidden')) return;
+        if (!(e.target instanceof Node)) return;
+        if (!menu.contains(e.target) && e.target !== btn) {
+          menu.setAttribute('hidden', '');
+          btn?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    </script>
+  </div>
+</section>
